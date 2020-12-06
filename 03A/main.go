@@ -32,10 +32,7 @@ func main() {
 func checkTree(pos position, slope string) bool {
 	slopewidth := len(slope)
 	positionOnSlope := pos.x % slopewidth
-	if string(slope[positionOnSlope]) == "#" {
-		return true
-	}
-	return false
+	return string(slope[positionOnSlope]) == "#"
 }
 
 // changePosition will change the position according to the movement.
