@@ -15,6 +15,7 @@ type movement struct {
 }
 
 func main() {
+	totaltreeshugged := 1
 	var velocities = []movement{
 		movement{xv: 1, yv: 1},
 		movement{xv: 3, yv: 1},
@@ -22,7 +23,6 @@ func main() {
 		movement{xv: 7, yv: 1},
 		movement{xv: 1, yv: 2},
 	}
-	totaltreeshugged := 1
 	for _, mov := range velocities {
 		pos := position{x: 0, y: 0}
 		treeshugged := 0
@@ -35,7 +35,6 @@ func main() {
 		}
 		totaltreeshugged *= treeshugged
 		fmt.Printf("With velocity %v, trees hugged: %d (total trees hugged: %d)\n", mov, treeshugged, totaltreeshugged)
-
 	}
 }
 
