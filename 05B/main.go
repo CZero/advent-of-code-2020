@@ -48,6 +48,7 @@ func main() {
 	}
 }
 
+// checkALlTheSeats checks every possible seat to see if it's taken. If not, it appends it to the return array
 func checkAllTheSeats() (freeseats []seat) {
 	cols, rows := initializeRowcols(numcols), initializeRowcols(numrows)
 	for _, row := range rows {
@@ -60,10 +61,12 @@ func checkAllTheSeats() (freeseats []seat) {
 	return freeseats
 }
 
+// checkFreeSeat checks the seatid above and below as to verify it exists (both should be taken, so should exist)
 func checkFreeSeat(seatid int) bool {
 	return seatIdsSeen[seatid-1] && seatIdsSeen[seatid+1]
 }
 
+// cutmap returns half your array based on the toggle for binary partitioning
 func cutmap(rowcols []int, letter string) []int {
 	half := len(rowcols) / 2
 	switch {
@@ -75,6 +78,7 @@ func cutmap(rowcols []int, letter string) []int {
 	return rowcols
 }
 
+// initializeRowcols creates an array of all the seats or rows
 func initializeRowcols(num int) []int {
 	var initialized []int
 	for i := 0; i < num; i++ {
