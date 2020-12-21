@@ -10,3 +10,4 @@ Yeah, a new year of [Advent of Code](https://adventofcode.com/2020/)!
 | 4 | [**A**](04A/main.go) | [**B**](04B/main.go) |
 | 5 | [**A**](05A/main.go) | [**B**](05B/main.go) |
 | 6 | [**A**](06A/main.go) | [**B**](06B/main.go) |
+| 7 | [**A**](07A/main.go) | *[**B**](07B/main.go)* |
