@@ -26,7 +26,6 @@ func main() {
 	for _, rule := range rules {
 		parseBag(rule)
 	}
-	// fmt.Printf("%#v\n", bags)
 	for _, bag := range bags {
 		lookInBag(bag, lookingFor)
 	}
@@ -64,9 +63,7 @@ func lookInBag(openBag Bag, lookingFor string) {
 
 func contains(bagsFound []string, bag string) bool {
 	for _, examine := range bagsFound {
-		// fmt.Println(examine, bag)
 		if examine == bag {
-			// fmt.Println("Hoh, een dubbele")
 			return true
 		}
 	}
@@ -76,12 +73,9 @@ func contains(bagsFound []string, bag string) bool {
 func parseBag(line string) {
 	bagRule := strings.Split(line, " contain ")                                                      // Break line in 2 parts: mainBag and contents
 	mainBag := strings.Split(bagRule[0], " ")[0:2][0] + " " + strings.Split(bagRule[0], " ")[0:2][1] // Remove bag or bags at the end
-	// fmt.Printf("Mainbag = %#v\n", mainBag)
 	bag := Bag{name: mainBag}
 	bag.contents = make(map[string]int)
-	// fmt.Printf("%#v\n", bagRule)
 	rules := strings.Split(bagRule[1], ", ")
-	// fmt.Printf("%#v\n", rules)
 	for _, rule := range rules {
 		if rule != "no other bags." {
 			words := strings.Split(rule, " ")[0:3]
@@ -91,7 +85,6 @@ func parseBag(line string) {
 		}
 	}
 	bags = append(bags, bag)
-	// fmt.Printf("%#v\n", bags)
 	return
 }
 
