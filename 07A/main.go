@@ -36,29 +36,27 @@ func main() {
 }
 
 func lookInBag(openBag Bag, lookingFor string) {
-	if len(openBag.contents) != 0 {
-		for bag := range openBag.contents {
-			if bag != lookingFor {
-				for _, newBag := range bags {
-					if newBag.name == bag {
-						if !contains(bagsFound, newBag.name) {
-							lookInBag(newBag, lookingFor)
-						}
-					}
+	if len(openBag.contents) == 0 { // A bag without contents doesn't need searching.
+		return
+	}
+	for bag := range openBag.contents {
+		if bag != lookingFor { // Only recurse when this isn't the bag we're looking for.
+			for _, newBag := range bags {
+				if newBag.name == bag && !contains(bagsFound, newBag.name) { // Check if we haven't found it before.
+					lookInBag(newBag, lookingFor)
 				}
-			} else {
-				if !contains(bagsFound, openBag.name) {
-					bagsFound = append(bagsFound, openBag.name)
-					for _, bag := range bags {
-						if !contains(bagsFound, bag.name) {
-							lookInBag(bag, openBag.name)
-						}
+			}
+		} else {
+			if !contains(bagsFound, openBag.name) {
+				bagsFound = append(bagsFound, openBag.name)
+				for _, bag := range bags {
+					if !contains(bagsFound, bag.name) { // Only recurse it if we haven't found it before.
+						lookInBag(bag, openBag.name)
 					}
 				}
 			}
 		}
 	}
-	return
 }
 
 func contains(bagsFound []string, bag string) bool {
